@@ -1,0 +1,47 @@
+
+To use the multi-threaded version (on multi-processor systems):
+
+1/ Define MOD_THREADS at compile time, with the number of threads you want.
+   (#processors for efficiency ?)
+2/ Link with -lpthread
+
+Each thread basically calls a wrapper to MOD_gauss: thread number "t" fills
+MOD_residues[t + k * NB_THREADS]...
+Here are the global variables that need to be separated to each thread:
+- MOD_type mat**, in fact: MOD_mat_work_space and MOD_mat_tmp.
+- MOD_current, MOD_current_inv
+- functions from MOD_base_ops.h called from MOD_gauss():
+  * MOD_det2, MOD_add, MOD_mul, MOD_div, MOD_reduce.
+
+So the functions that need to depend on MOD_current and MOD_current_inv are all
+the functions in MOD_base_ops.h, except MOD_round(), which doesn't depend on
+the current moduli.
+  
+in MOD_base_ops.h:
+#define MOD_current     (MOD_current[thr])
+#define MOD_current_inv (MOD_current_inv[thr])
+
+Ajouter aux fonctions l'argument: int thr:
+#define MOD_add(a,b) MOD_add_t(a,b,thr)
+
+*** Or just add MOD_current and MOD_current_inv to the arguments of the
+*** base_ops functions ?
+
+A faire apres la declaration et la ligne de definition.  Ca a l'air de se faire
+bien, les fonctions ne sont pas mutuellement recursives !!! ;-)
+
+Alternative:
+------------
+
+Always in the code: MOD_add(a,b,MOD_current, MOD_current_inv), for all
+functions.  With a #define MOD_add(a,b,c,d) MOD_add(a,b) in the case
+MOD_THREADS is _not_ defined.
+
+_____________
+
+(MOD_current, MOD_current_inv) are not easily separated, for speed reasons...
+How to do ????  Smallest functions in MOD_baseops.h => #define.
+Sign reconstruction functions => separate file.
+
+The main program spawns all the NB_THREADS threads, and waits for their end,
+then proceeds as usual.

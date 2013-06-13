@@ -1,0 +1,502 @@
+# Sign reconstruction timings with method l
+# 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100 modulis
+
+# nb_mod = 5
+# nb_random = 0
+3.5
+# nb_random = 5
+1.1
+
+# nb_mod = 10
+# nb_random = 0
+10.9
+# nb_random = 5
+7.4
+# nb_random = 10
+1.8
+
+# nb_mod = 15
+# nb_random = 0
+22.3
+# nb_random = 5
+18.8
+# nb_random = 10
+11.4
+# nb_random = 15
+2.6
+
+# nb_mod = 20
+# nb_random = 0
+37.4
+# nb_random = 5
+34.1
+# nb_random = 10
+26.6
+# nb_random = 15
+15.3
+# nb_random = 20
+3.5
+
+# nb_mod = 25
+# nb_random = 0
+57.4
+# nb_random = 5
+53.2
+# nb_random = 10
+45.7
+# nb_random = 15
+34.6
+# nb_random = 20
+19.2
+# nb_random = 25
+4.3
+
+# nb_mod = 30
+# nb_random = 0
+83.8
+# nb_random = 5
+80.0
+# nb_random = 10
+72.2
+# nb_random = 15
+60.1
+# nb_random = 20
+44.6
+# nb_random = 25
+25.0
+# nb_random = 30
+5.4
+
+# nb_mod = 35
+# nb_random = 0
+107
+# nb_random = 5
+103
+# nb_random = 10
+96.7
+# nb_random = 15
+85.5
+# nb_random = 20
+69.3
+# nb_random = 25
+50.9
+# nb_random = 30
+27.7
+# nb_random = 35
+6.1
+
+# nb_mod = 40
+# nb_random = 0
+137
+# nb_random = 5
+134
+# nb_random = 10
+126
+# nb_random = 15
+115
+# nb_random = 20
+100.5
+# nb_random = 25
+81.6
+# nb_random = 30
+58.3
+# nb_random = 35
+31.1
+# nb_random = 40
+6.6
+
+# nb_mod = 45
+# nb_random = 0
+177
+# nb_random = 5
+173
+# nb_random = 10
+166
+# nb_random = 15
+154
+# nb_random = 20
+138
+# nb_random = 25
+116
+# nb_random = 30
+92.5
+# nb_random = 35
+65.2
+# nb_random = 40
+34.7
+# nb_random = 45
+7.3
+
+# nb_mod = 50
+# nb_random = 0
+215
+# nb_random = 5
+213
+# nb_random = 10
+205
+# nb_random = 15
+191
+# nb_random = 20
+176
+# nb_random = 25
+157
+# nb_random = 30
+134
+# nb_random = 35
+106
+# nb_random = 40
+75.2
+# nb_random = 45
+40.8
+# nb_random = 50
+9.6
+
+# nb_mod = 55
+# nb_random = 0
+262
+# nb_random = 5
+260
+# nb_random = 10
+253
+# nb_random = 15
+240
+# nb_random = 20
+225
+# nb_random = 25
+203
+# nb_random = 30
+174
+# nb_random = 35
+147
+# nb_random = 40
+116
+# nb_random = 45
+81.5
+# nb_random = 50
+42.5
+# nb_random = 55
+8.8
+
+# nb_mod = 60
+# nb_random = 0
+312
+# nb_random = 5
+311
+# nb_random = 10
+302
+# nb_random = 15
+289
+# nb_random = 20
+275
+# nb_random = 25
+254
+# nb_random = 30
+232
+# nb_random = 35
+203
+# nb_random = 40
+170
+# nb_random = 45
+135
+# nb_random = 50
+96.2
+# nb_random = 55
+49.6
+# nb_random = 60
+10.1
+
+# nb_mod = 65
+# nb_random = 0
+369
+# nb_random = 5
+364
+# nb_random = 10
+356
+# nb_random = 15
+342
+# nb_random = 20
+326
+# nb_random = 25
+307
+# nb_random = 30
+283
+# nb_random = 35
+256
+# nb_random = 40
+220
+# nb_random = 45
+182
+# nb_random = 50
+144
+# nb_random = 55
+101
+# nb_random = 60
+54.2
+# nb_random = 65
+10.5
+
+# nb_mod = 70
+# nb_random = 0
+432
+# nb_random = 5
+432
+# nb_random = 10
+422
+# nb_random = 15
+411
+# nb_random = 20
+391
+# nb_random = 25
+370
+# nb_random = 30
+343
+# nb_random = 35
+317
+# nb_random = 40
+286
+# nb_random = 45
+250
+# nb_random = 50
+211
+# nb_random = 55
+164
+# nb_random = 60
+116
+# nb_random = 65
+58.5
+# nb_random = 70
+11.4
+
+# nb_mod = 75
+# nb_random = 0
+508
+# nb_random = 5
+510
+# nb_random = 10
+497
+# nb_random = 15
+481
+# nb_random = 20
+465
+# nb_random = 25
+442
+# nb_random = 30
+413
+# nb_random = 35
+386
+# nb_random = 40
+346
+# nb_random = 45
+311
+# nb_random = 50
+273
+# nb_random = 55
+229
+# nb_random = 60
+169
+# nb_random = 65
+114
+# nb_random = 70
+59.7
+# nb_random = 75
+12.4
+
+# nb_mod = 80
+# nb_random = 0
+577
+# nb_random = 5
+574
+# nb_random = 10
+568
+# nb_random = 15
+551
+# nb_random = 20
+534
+# nb_random = 25
+509
+# nb_random = 30
+488
+# nb_random = 35
+451
+# nb_random = 40
+417
+# nb_random = 45
+374
+# nb_random = 50
+333
+# nb_random = 55
+289
+# nb_random = 60
+238
+# nb_random = 65
+180
+# nb_random = 70
+125
+# nb_random = 75
+67.4
+# nb_random = 80
+14.3
+
+# nb_mod = 85
+# nb_random = 0
+655
+# nb_random = 5
+652
+# nb_random = 10
+644
+# nb_random = 15
+630
+# nb_random = 20
+611
+# nb_random = 25
+592
+# nb_random = 30
+562
+# nb_random = 35
+534
+# nb_random = 40
+493
+# nb_random = 45
+455
+# nb_random = 50
+411
+# nb_random = 55
+361
+# nb_random = 60
+307
+# nb_random = 65
+254
+# nb_random = 70
+194
+# nb_random = 75
+131
+# nb_random = 80
+66.8
+# nb_random = 85
+13.7
+
+# nb_mod = 90
+# nb_random = 0
+740
+# nb_random = 5
+738
+# nb_random = 10
+730
+# nb_random = 15
+716
+# nb_random = 20
+697
+# nb_random = 25
+677
+# nb_random = 30
+648
+# nb_random = 35
+616
+# nb_random = 40
+582
+# nb_random = 45
+539
+# nb_random = 50
+493
+# nb_random = 55
+442
+# nb_random = 60
+389
+# nb_random = 65
+333
+# nb_random = 70
+273
+# nb_random = 75
+211
+# nb_random = 80
+142
+# nb_random = 85
+75.5
+# nb_random = 90
+14.6
+
+# nb_mod = 95
+# nb_random = 0
+836
+# nb_random = 5
+820
+# nb_random = 10
+821
+# nb_random = 15
+802
+# nb_random = 20
+786
+# nb_random = 25
+765
+# nb_random = 30
+738
+# nb_random = 35
+706
+# nb_random = 40
+667
+# nb_random = 45
+629
+# nb_random = 50
+589
+# nb_random = 55
+533
+# nb_random = 60
+476
+# nb_random = 65
+416
+# nb_random = 70
+349
+# nb_random = 75
+291
+# nb_random = 80
+228
+# nb_random = 85
+155
+# nb_random = 90
+80.5
+# nb_random = 95
+15.9
+
+# nb_mod = 100
+# nb_random = 0
+917
+# nb_random = 5
+910
+# nb_random = 10
+902
+# nb_random = 15
+887
+# nb_random = 20
+873
+# nb_random = 25
+855
+# nb_random = 30
+826
+# nb_random = 35
+801
+# nb_random = 40
+764
+# nb_random = 45
+723
+# nb_random = 50
+676
+# nb_random = 55
+621
+# nb_random = 60
+571
+# nb_random = 65
+510
+# nb_random = 70
+449
+# nb_random = 75
+380
+# nb_random = 80
+312
+# nb_random = 85
+246
+# nb_random = 90
+160
+# nb_random = 95
+79.7
+# nb_random = 100
+16.1

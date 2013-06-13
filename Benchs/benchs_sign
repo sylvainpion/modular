@@ -1,0 +1,50 @@
+#!/bin/sh
+#
+# Automatic bench script for sign reconstruction
+#
+
+nb_mods="5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+nb_randoms="0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+method=$1
+
+PATH=/usr/bin:$PATH
+
+if [ -z "$method" ] ;
+then
+  echo "You forgot to specify the method l,r,n."
+  exit
+fi
+
+echo "# Sign reconstruction timings with method $method"
+echo "# $nb_mods modulis"
+
+for nb_mod in $nb_mods;
+do
+  echo
+  echo "# nb_mod = $nb_mod"
+  for nb_random in $nb_randoms;
+  do
+    if [ $nb_random -le $nb_mod ] ;
+    then
+      echo "# nb_random = $nb_random"
+      for loops in 10000 100000 1000000 10000000 100000000 ;
+      do
+        temps=`( time -p ./time_sign_rec $nb_mod $nb_random $loops $method 2>&1 > /dev/null ) | grep user`
+        set $temps
+        temps=`echo $2 | tr -d '.'`
+        if [ $temps -gt 200 ] ;
+        then
+          tps2=`expr $temps \* 10000 / $loops`;
+          if [ $tps2 -gt 100 ] ;
+          then
+            echo "$tps2" ;
+          else
+            decimal=`expr $temps \* 100000 / $loops - 10 \* $tps2`
+            echo "$tps2.$decimal" ;
+          fi
+          break ;
+        fi ;
+      done
+    fi ;
+  done ;
+done

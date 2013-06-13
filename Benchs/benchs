@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+# Automatic bench script
+#
+
+bits=53
+dims="2 3 4 5 6 7 8 9 10 11 12 13 14"
+
+PATH=/usr/bin:$PATH
+
+echo "Elapsed times are in microseconds per loop."
+echo "Entries are $bits bits wide."
+echo
+echo "[dim]\t[RANDOM]\t[HALF]\t\t[ZERO]"
+
+for dim in $dims;
+do
+  echo "$dim\t\c"
+  for rank in $dim `expr $dim / 2` 0;
+  do
+    for loops in 1 10 100 1000 10000 100000 1000000 10000000;
+    do
+      temps=`( time -p ./time_mod $dim $rank $bits $loops 2>&1 > /dev/null ) | grep user`
+      set $temps
+      temps=`echo $2 | tr -d '.'`
+      if [ $temps -gt 200 ] ;
+      then
+        tps2=`expr $temps \* 10000 / $loops`;
+        if [ $tps2 -gt 100 ] ;
+        then
+          echo "$tps2\t\t\c" ;
+        else
+          decimal=`expr $temps \* 100000 / $loops - 10 \* $tps2`
+          echo "$tps2.$decimal\t\t\c" ;
+        fi
+	break ;
+      fi ;
+    done ;
+  done
+  echo ;
+done
+

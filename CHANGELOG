@@ -1,0 +1,149 @@
+Version 2.4 -- Wed Feb 4 1998
+- Fixed bug in MOD_det_init() that supposed enough moduli were precomputed.
+  (thanks Fabrice for the report)
+- MOD_reconstruct.h split into .c and .h.
+
+Version 2.3 -- Tue Dec 16 1997
+
+- Functions dealing with several residues from MOD_base_ops.h put in
+  MOD_reconstruct.h.
+- Thread support added (parallel computation on multi-processor machines).
+  [ This has implied that a preprocessing is done when MOD_THREAD is not set. ]
+- MOD_{sign_det|det_is_null}() take now a "double **mat", not "MOD_type **mat".
+- All the determinant stuff is moved into MOD_det.[ch].
+- MOD_is_prime.[ch] cleanup.
+- MOD_pre_primes[] is now an array of int => space saved.
+- MOD_int_TYPE, MOD_type_name, MOD_TYPE_name: removed.
+- time_sign_rec program added, to test and bench the different sign
+  reconstruction methods.
+- MOD_det_clear() and MOD_det_init(dim) must be called separately if you use
+  determinants.
+- Changed the copyright notice to LGPL.
+- MOD_to_double() function added, that gives a good double approximation,
+  based on Newton's representation.
+- MOD_newton_i[] changed to MOD_newton_coef[].
+
+Version 2.2 -- Sat Nov 15 1997
+
+- MOD_det5x5() removed: useless and took place.
+- More dynamic: more moduli are "precomputed" on demand by MOD_needed_mods()
+  and MOD_fp_needed_mods().
+- Various fixes in MOD_init().
+- Added some #ifndef MOD_???_H to protect the include files from re-inclusions.
+- MOD_needed_mods()    renamed MOD_det_needs_mods().
+- MOD_fp_needed_mods() renamed MOD_fp_needs_mods().
+- MOD_modulis[]        renamed MOD_residues[].
+
+Version 2.1 -- Wed Nov 12 1997
+
+- Changed MOD_ABS() from "<?-:" to fabs().
+- MOD_det5x5() now done separetely (it's not Gauss anymore).
+  It's disabled, because non tested (cf MOD_det.c).
+- MOD_perm2(a,b,c,d) = a*d+b*c introduced.
+- MOD_rounding.h replaced by _FPU.h (common with the DIS package).
+- "long double"s are not used => away from the source, it's cleaner.
+- No longer system dependant file, except _FPU.h.
+
+
+Version 2.0 -- Wed Apr 16 1997
+
+- Big reorganisation... It should be a cleaner package now.
+- changed back __inline__ to inline (it was only usefull for ANSI check...)
+- main_det.[ch] + gauss.[ch] -> MOD_det.[ch]
+- all symbol and file names begin now with MOD_, to avoid name clashes.
+- Shared library libMOD.so available.
+
+Version 1.9 -- Wed Mar 12 1997
+
+- syst.h becomes MOD_syst.h, and contains compile-time configurable options.
+- Possibility to *not* use the "long double" type under Linux/*86.
+  And I made it the default, since it's quicker and takes less place.
+- Added null determinant matrices to generate.c.
+- MOD_det_is_null() high level function added, that returns (det == 0).
+- Reduce memory space needed by some precomputations.
+- Merged a few ridiculous files, into main ones.
+- libmod.a becomes libMOD.a, and a few other name changes.
+- Dynamic test for good primes for long double should be ok now.
+
+Version 1.8 -- Mon Feb 24 1997
+
+- deduction(i) function implemented. You can deduce dets_i[i] from the
+  newton_i[0 -> i-1] (which can be computed from dets_i[0 -> i-1]).
+  [That's true if det < product (MOD_primes[0 -> i-1]), of course !]
+- Fix in the Makefile, so that "make -j" works (compile on multi-processors).
+- Use "CFLAGS += -DNEWTON=??" in the Makefile, to use the Newton method.
+  You can set the probability in the file main_det.c.
+- Sparc/Linux port... in progress.
+- Various fixes, so that it compiles with gcc, g++, cc, CC (solaris at least).
+  The code is now "ANSI C/C++", with optionnal use of inline functions.
+
+Version 1.7 -- Sun Feb 2 1997
+
+- Newton method, and probabilistic variant.
+
+Version 1.6 -- Wed Jan 29 1997
+
+- No more systematicaly print information in MOD_init().
+- Alpha/DEC-OSF port.
+- Alpha/Linux port.
+
+Version 1.5 -- Tue Jan 14 1997
+
+- No more limit on the dimension.
+- Bug fix in epsilon_lagrange[].
+- Pre-computation of epsilon_orig[].
+- primes.c, primes.h and primes are back. Prime numbers are computed at compile
+  time. If MOD_init() is called with more modulis than those precomputed,
+  the one needed are computed at run time. This is a good compromise.
+
+Version 1.4 -- Fri Jan 10 1997
+
+- Exact implementation of Lagrange's method.
+- Exact implementation of the "last" method (relax_mul).
+- bug fix about the definition of MANTISSA_ERROR.
+- Switch to specialized functions in Gauss algorithm, as soon as dim<5.
+- MOD_init(dim,#mod) and MOD_clear() functions.
+- primes.c, compute_bounds.c are removed (and the files they generated:
+  modulis.h, det_bounds.h, primes.o, primes, compute_bounds.o, compute_bounds).
+  The precomputations are now done at run time, in MOD_init().
+- general.h file, to clean the package.
+- inv_MOD[] moved to MOD_primes_inv_maj[].
+- Precompute the MOD_primes_inv[] = 1/MOD_primes[], to replace the
+  divisions "/ MOD_current", by a multiplication "* MOD_current_inv".
+  That speeds up things in MOD_det2, MOD_mul, which is great.
+  I'm not sure we have the right to do that.
+- Compile time option "FIXED_DIM" removed, as it does not speed up anything.
+
+Version 1.3 -- Fri Dec 20 1996
+
+- Improved Bezout: it's not neccesary to use MOD_reduce at each step,
+  only a MOD_soft_reduce at the end is necessary.
+- det_bounds.h is now generated by compute_bounds.c, so you can use
+  dimensions greater than 14. It should be ok for all dimensions <= 24.
+- Little change in Gauss function.
+- Support for a lot of modulis (no more bounded by 37 (31 on Intel).
+  You can set this in the Makefile (default is 100).
+
+Version 1.2 -- Fri Dec 6 1996
+
+- Bezout instead of exponentiation (Fermat) to compute the inverse.
+- modulis.h excluded from libmod.a
+- inline functions declared in .h files, so they are now inlined :-)
+- time_mod program, using generate.c, that computes a matrix with
+  a "fixed" determinant, and entrees on b bits.
+
+Version 1.1 -- Wed Dec 4 1996
+
+- Improvements, less useless computations (in Gauss, numer and denom).
+- Irix port
+- x86/Linux port, with support of 64 bits mantissas (=> 20% gain)
+- libmod.a gathers all the objects files.
+- FIXED_DIM available in the Makefile, to precompile efficiently (?)
+  for one particular dimension.
+- -funroll-loops and -funroll-all-loops do not produce better times
+  in dimension 3 nor 6.
+
+Version 1.0 -- Fri Nov 29 1996
+
+- 1st release, for Sun4 & Solaris only.
+- Seems not to be buggy. :-))

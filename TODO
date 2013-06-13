@@ -1,0 +1,26 @@
+Important:
+----------
+
+* Cleanup the doc: write a manual.
+* finish the README file about organization.
+* MOD_nb_modulis should be made local, not global ?
+* MOD_tree_{sum|base} are really usefull ???
+* one array of struct {MOD_current, MOD_current_inv}, instead of 2?
+
+
+Good point for high dimensions only:
+------------------------------------
+
+* Bareiss + new linear deduction method...
+* Debug the threads (non-deterministic bug...).  Try egcs, and/or glibc ?
+
+
+Other:
+------
+
+* Divide & Conquer sign/value reconstruction, and deduction. (using gmp ?)
+* Add last theoritical developments, i.e. lagrange_deduction().
+* Avoid static variables (or const) in libMOD.so... (?)
+* Change "inline" to "INLINE" ?
+* Move big functions from "inline" MOD_base_ops.h, to another file ?
+* Add Christoph Burnikel's remarks (linear table when k fixed) ?

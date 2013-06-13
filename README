@@ -1,0 +1,83 @@
+What's this ?
+-------------
+This package uses modular arithmetic to compute exact sign of determinants, and
+more general polynomial expressions.  Currently, the entries must have integer
+values <2^54, stored into "double"s.  It can be ported to any kind of integer
+type, and aligned floating point type.  The main implementation choice is the
+one of the moduli, which are chosen prime, down from 2^27, so that the basic
+operation "a*d-b*c" fits exactly in a double.
+
+Author:
+-------
+Sylvain Pion <Sylvain.Pion@sophia.inria.fr> [Nov 96 - Dec 97].
+Theoretical work has been done with Herve Bronnimann, Ioannis Emiris and
+Victor Pan.  A paper at ACM CG'97 describes that part, and also a RR.
+See http://www.inria.fr/prisme/personnel/pion/progs/modular/modular_eng.html
+    (or near the URL http://www.inria.fr/prisme).
+This work is supported by the CGAL Project.
+
+Copyright:
+----------
+This package is copyrighted by Sylvain Pion 1997-1998.
+This code is placed under the LGPL, see file COPYING.LIB.
+
+Supported platforms:
+--------------------
+The modular package relies on IEEE 754 FP specifications, and especially some
+rounding modes, to compute exact upper bounds of expressions, and setting the
+precision to "double" exactly.  So the only file that needs to be ported is
+_FPU.h.  Currently, the supported architectures are:
+- Sparc/SunOS   (supported with gcc only)
+- Sparc/Solaris
+- Intel x86/Linux
+- Mips/Irix
+- Sparc/Linux
+- Alpha/Linux   (not yet fully supported)
+- Alpha/DEC-OSF (not yet fully supported)
+- Please contact me for other ports, and see the file _FPU.h.
+
+
+How to compile and install:
+---------------------------
+- Check the compile options in the Makefile.
+- Eventually change the sign reconstruction method for determinants, in
+  MOD_det.h.
+- Type make, you'll get libMOD.a and libMOD.so.
+- You can just keep the *.h files and the libraries.
+
+
+How to use:
+-----------
+- In your source files, add the line: #include "MOD.h" (and "MOD_det.h" for
+  determinants stuff).
+- Use the functions:
+    int MOD_sign_det    (double **mat, const int dim);
+    int MOD_det_is_null (double **mat, const int dim);
+  (mat is a pointer -> array of pointers -> arrays of doubles)
+- Modular arithmetic requires some precomputations.  So you need to call, at
+  the beginning of your program MOD_init(nb_mod) and MOD_det_init(dim).  If
+  these numbers are too low, the functions MOD_det_needs_mods() and
+  MOD_fp_needs_mods() will take care of that dynamicaly.
+
+  [ The parameters of MOD_det_init() and MOD_init() are the maximum dimension
+  you plan to use, and the maximum number of modulis you plan to use. You can
+  estimate this number, by dividing the logarithm (base 2) of the maximum
+  value expected for your determinant, by 27. ]
+
+- Link with libMOD.a (or libMOD.so) and -lm.
+- If you want to use the package at a lower level (to compute different
+  expressions than signs of determinants), you can look at MOD_det.c,
+  and see how it works.  Mainly, you can use the functions in MOD_base_ops.h,
+  after having set MOD_current and MOD_current_inv, which are global.
+- Thread support is still experimental.  See the Makefile for enabling that.
+
+
+Organization:
+-------------
+- The CHANGELOG file contains all that has been modified since the beginning,
+  and the number of the current version.
+- The TODO file contains things that aren't implemented yet, but may be in
+  next versions.
+- MOD.h is the general include file
+- MOD_det.h is the same for determinants.
+- ...

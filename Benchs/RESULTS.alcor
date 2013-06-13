@@ -1,0 +1,37 @@
+Benchs of version 2.2 (gcc -O6, Ultra@200MHz):
+----------------------------------------------
+
+\time ./time_mod  2 2 53 1000000 
+user        7.1
+\time ./time_mod  2 1 53 1000000 
+user        7.1
+\time ./time_mod  2 2 24 1000000
+user        5.4
+\time ./time_mod  2 1 24 1000000 
+user        4.3
+
+\time ./time_mod  3 3 53 1000000
+user       16.3
+\time ./time_mod  3 3 24 1000000
+user        9.5
+\time ./time_mod  3 2 53 1000000
+user       16.2
+\time ./time_mod  3 2 24 1000000
+user        9.4
+\time ./time_mod  3 1 53 1000000 
+user       16.3
+\time ./time_mod  3 1 24 1000000
+user        9.3
+
+\time ./time_mod  6 6 53 100000
+user       22.0
+\time ./time_mod  6 6 24 100000
+user       10.6
+\time ./time_mod  6 3 53 100000
+user       22.5
+\time ./time_mod  6 3 24 100000
+user       10.7
+\time ./time_mod  6 1 53 100000
+user       20.4
+\time ./time_mod  6 1 24 100000
+user       10.6

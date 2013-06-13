@@ -1,0 +1,21 @@
+Benchs of version 2.2 (gcc -O6, Dual Pentium 166MHz):	WITHOUT THREADS
+-----------------------------------------------------
+
+./time_mod 2 2 53 1000000  11.26s user 0.01s system 99% cpu 11.272 total
+./time_mod 2 1 53 1000000  12.49s user 0.01s system 99% cpu 12.511 total
+./time_mod 2 2 24 1000000  7.27s user 0.01s system 100% cpu 7.274 total
+./time_mod 2 1 24 1000000  7.13s user 0.01s system 99% cpu 7.140 total
+
+./time_mod 3 3 53 1000000  27.45s user 0.01s system 100% cpu 27.457 total
+./time_mod 3 3 24 1000000  16.32s user 0.01s system 99% cpu 16.342 total
+./time_mod 3 2 53 1000000  29.22s user 0.02s system 100% cpu 29.235 total
+./time_mod 3 2 24 1000000  16.24s user 0.01s system 100% cpu 16.246 total
+./time_mod 3 1 53 1000000  31.79s user 0.01s system 99% cpu 31.805 total
+./time_mod 3 1 24 1000000  17.10s user 0.00s system 99% cpu 17.109 total
+
+./time_mod 6 6 53 100000  36.53s user 0.01s system 100% cpu 36.538 total
+./time_mod 6 6 24 100000  17.23s user 0.00s system 100% cpu 17.226 total
+./time_mod 6 3 53 100000  35.42s user 0.01s system 99% cpu 35.439 total
+./time_mod 6 3 24 100000  17.54s user 0.00s system 99% cpu 17.542 total
+./time_mod 6 1 53 100000  36.22s user 0.00s system 100% cpu 36.216 total
+./time_mod 6 1 24 100000  18.08s user 0.00s system 100% cpu 18.079 total
